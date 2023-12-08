@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.countries-list {
+    padding: 0 2.5rem;
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: minmax(0, 340px);
+    justify-content: center;
+
+    @media (min-width: $tablet) {
+        grid-template-columns: repeat(2, minmax(0, 340px));
+    }
+    
+    @media (min-width: $desktop) {
+        grid-template-columns: repeat(3, minmax(0, 340px));
+    }
+    
+    @media (min-width: $desktop_l) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4.688rem;
+        padding: 0;
+    }
+}

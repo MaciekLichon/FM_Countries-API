@@ -1,0 +1,26 @@
+/* ----- COLORS ----- */
+$clr-100: hsl(0, 0%, 100%);
+$clr-200: hsl(0, 0%, 98%);
+$clr-300: hsl(0, 0%, 52%);
+$clr-700: hsl(209, 23%, 22%);
+$clr-800: hsl(207, 26%, 17%);
+$clr-900: hsl(200, 15%, 8%);
+
+/* ----- FONTS ----- */
+$ff-regular: 'Nunito Sans', sans-serif;
+
+$fw-light: 300;
+$fw-semibold: 600;
+$fw-extrabold: 800;
+
+/* ----- BREAKPOINTS ----- */
+$tablet: 768px;
+$desktop: 1024px;
+$desktop_l: 1400px;
+
+// 14 - main page title - 24
+// 12 - mode toggle - 16
+// 12 - border countries (buttons) - 14
+// 14 - most of the text - 16
+// 16 - border title - 16 
+// 22 - country name - 32

@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+body {
+    font-family: $ff-regular;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    font-weight: $fw-light;
+    color: $clr-900;
+}
