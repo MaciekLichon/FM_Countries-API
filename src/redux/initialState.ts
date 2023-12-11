@@ -1,5 +1,9 @@
 const initialState = {
-    countries: []
+    countries: [],
+    filters: {
+        name: '',
+        region: ''
+    }
 };
 
 export default initialState;

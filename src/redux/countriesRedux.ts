@@ -1,6 +1,18 @@
 // selectors
 export const getAllCountries = state => state.countries;
 export const getCountryByName = ({countries}, name) => countries.find(country => country.name === name);
+export const getCountryByCode = ({countries}, code) => countries.find(country => country.cca3 === code);
+export const getFilteredCountries = ({countries, filters}) => countries.filter(country => {
+    const noRegionFilter = filters.region === '';
+    const noNameFilter = filters.name === '';
+    const matchesRegionFilter = filters.region === country.region;
+    const matchesNameFilter = country.name.toLowerCase().includes(filters.name);
+
+    return (noRegionFilter && noNameFilter) 
+        || (noRegionFilter && matchesNameFilter) 
+        || (matchesRegionFilter && noNameFilter) 
+        || (matchesRegionFilter && matchesNameFilter);
+});
 
 // actions
 const createActionName = actionName => `app/countries/${actionName}`;
@@ -11,13 +23,12 @@ export const updateCountries = payload => ({ type: UPDATE_COUNTRIES, payload });
 
 export const fetchAllCountries = () => {
     return (dispatch) => {
-        fetch('https://restcountries.com/v3.1/all?fields=flags,name,region,subregion,population,capital,currencies,languages,borders,tld')
+        fetch('https://restcountries.com/v3.1/all?fields=flags,name,region,subregion,population,capital,currencies,languages,borders,tld,cca3')
             .then(res => res.json())
             .then(countries => {                
+                
                 const countriesData = [];
                 for (let country of countries) {
-                    console.log(country);
-                    
                     
                     const population = new Intl.NumberFormat().format(country.population);
                     const currencies = [];
@@ -55,7 +66,8 @@ export const fetchAllCountries = () => {
                         currencies: currencies,
                         languages: languages,
                         borders: country.borders,
-                        tld: country.tld[0]
+                        tld: country.tld[0],
+                        cca3: country.cca3
                     }
                     
                     countriesData.push(details);   

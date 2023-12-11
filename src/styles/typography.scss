@@ -6,4 +6,8 @@ body {
     line-height: 1rem;
     font-weight: $fw-light;
     color: $clr-900;
+
+    @media (min-width: $tablet) {
+        font-size: 1rem;
+    }
 }

@@ -1,10 +1,12 @@
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import initialState from "./initialState";
 import countriesReducer from "./countriesRedux";
+import filtersReducer from "./filtersRedux";
 import { thunk } from "redux-thunk";
 
 const subreducers = {
-    countries: countriesReducer
+    countries: countriesReducer,
+    filters: filtersReducer
 };
 
 const reducer = combineReducers(subreducers);
