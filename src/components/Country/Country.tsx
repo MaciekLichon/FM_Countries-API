@@ -4,13 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCountryByName } from "../../redux/countriesRedux";
 import BorderButton from "../BorderButton/BorderButton";
+import { ICountryDetails } from "../../redux/initialState";
+
 
 const Country: React.FC = () => {
 
     const { countryName } = useParams();
-    const country = useSelector(state => getCountryByName(state, countryName));
+    const country: ICountryDetails = useSelector(state => getCountryByName(state, countryName));
     
-    const getCommaSeparatedString = (array: []) => {
+    const getCommaSeparatedString = (array: string[]) => {
         let str = '';
         for (let i = 0; i < array.length - 1; i++) {
             str += `${array[i]}, `

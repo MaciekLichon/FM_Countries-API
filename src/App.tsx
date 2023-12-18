@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import Home from "./components/Home/Home";
 import Country from "./components/Country/Country";
-import { fetchAllCountries } from "./redux/countriesRedux";
-import { useDispatch } from "react-redux";
 import Container from "./components/Container/Container";
+import { fetchAllCountries } from "./redux/countriesRedux";
 
 
 const App: React.FC = () => {

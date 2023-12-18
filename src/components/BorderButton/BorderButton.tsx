@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCountryByCode } from '../../redux/countriesRedux';
 
-const BorderButton: React.FC = ({code}) => {
+interface IProps {
+    code: string;
+}
 
-    const countryName = useSelector(state => getCountryByCode(state, code)).name;
+const BorderButton: React.FC<IProps> = ({code}) => {
+
+    const countryName: string = useSelector(state => getCountryByCode(state, code))?.name;
     
     return (
         <Link to={`/${countryName}`} className="tag tag_small">{countryName}</Link>

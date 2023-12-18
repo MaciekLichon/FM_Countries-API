@@ -15,13 +15,13 @@ const Filters: React.FC = () => {
         region: ''
     })
 
-    const handleNameSelection = (e) => {
+    const handleNameSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newFilters = {...filters, name: e.target.value}
         setFilters(newFilters);
         dispatch(updateFilters(newFilters));
     };
 
-    const handleRegionSelection = (region) => {
+    const handleRegionSelection = (region: string) => {
         const newFilters = {...filters, region: region};
         setFilters(newFilters);
         dispatch(updateFilters(newFilters));

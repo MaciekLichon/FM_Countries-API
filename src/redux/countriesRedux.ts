@@ -1,8 +1,10 @@
+import initialState, { IState } from "./initialState";
+
 // selectors
-export const getAllCountries = state => state.countries;
-export const getCountryByName = ({countries}, name) => countries.find(country => country.name === name);
-export const getCountryByCode = ({countries}, code) => countries.find(country => country.cca3 === code);
-export const getFilteredCountries = ({countries, filters}) => countries.filter(country => {
+export const getAllCountries = (state: IState) => state.countries.data;
+export const getCountryByName = ({countries}: IState, name: string) => countries.data.find(country => country.name === name);
+export const getCountryByCode = ({countries}: IState, code: string) => countries.data.find(country => country.cca3 === code);
+export const getFilteredCountries = ({countries, filters}: IState) => countries.data.filter(country => {
     const noRegionFilter = filters.region === '';
     const noNameFilter = filters.name === '';
     const matchesRegionFilter = filters.region === country.region;
@@ -15,11 +17,19 @@ export const getFilteredCountries = ({countries, filters}) => countries.filter(c
 });
 
 // actions
-const createActionName = actionName => `app/countries/${actionName}`;
+const createActionName = (actionName: string) => `app/countries/${actionName}`;
 const UPDATE_COUNTRIES = createActionName('UPDATE_COUNTRIES');
+
+const START_REQUEST = createActionName('START_REQUEST');
+const END_REQUEST = createActionName('END_REQUEST');
+const ERROR_REQUEST = createActionName('ERROR_REQUEST');
 
 // action creators
 export const updateCountries = payload => ({ type: UPDATE_COUNTRIES, payload });
+
+export const startRequest = () => ({type: START_REQUEST});
+export const endRequest = () => ({type: END_REQUEST});
+export const errorRequest = (error: Error) => ({error, type: ERROR_REQUEST});
 
 export const fetchAllCountries = () => {
     return (dispatch) => {
@@ -79,10 +89,16 @@ export const fetchAllCountries = () => {
 };
 
 // reducer
-const countriesReducer = (statePart = [], action) => {
+const countriesReducer = (statePart = initialState.countries, action) => {
     switch (action.type) {
         case UPDATE_COUNTRIES:
-            return [...action.payload];
+            return {...statePart, data: [...action.payload]};
+        case START_REQUEST:
+            return {...statePart, request: {pending: true, error: null, success: false}};
+        case END_REQUEST:
+            return {...statePart, request: {pending: false, error: false, success: true}};
+        case ERROR_REQUEST:
+            return {...statePart, request: {pending: false, error: true, success: false}};
         default: 
             return statePart;
     }

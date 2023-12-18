@@ -2,21 +2,9 @@ import React from "react";
 import "./CountryPreview.scss";
 
 import { Link } from "react-router-dom";
+import { ICountryDetails } from "../../redux/initialState";
 
-export interface ICountryDetails {
-    flagSrc: string;
-    flagAlt: string;
-    name: string;
-    region: string;
-    subregion: string;
-    population: string;
-    capital: string;
-    currency: string;
-    languages: string;
-    borders: string;
-}
-
-const CountryPreview: React.FC<ICountryDetails> = ({ flagSrc, flagAlt, name, region, subregion, population, capital, currency, languages, borders }) => {
+const CountryPreview: React.FC<ICountryDetails> = ({ flagSrc, flagAlt, name, region, population, capital }) => {
     
     return (
         <Link to={`/${name}`} className="country-preview">
