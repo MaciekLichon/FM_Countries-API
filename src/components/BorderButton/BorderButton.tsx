@@ -4,16 +4,14 @@ import "./BorderButton.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCountryByCode } from "../../redux/countriesSlice";
-import { IState } from "../../redux/initialState";
+import { RootState } from "../../redux/store";
 
 interface IProps {
     code: string;
 }
 
 const BorderButton: React.FC<IProps> = ({ code }) => {
-    const countryName: string = useSelector((state: IState) =>
-        getCountryByCode(state, code)
-    )?.name;
+    const countryName = useSelector((state: RootState) => getCountryByCode(state, code))?.name;
 
     return (
         <Link to={`/${countryName}`} className="tag tag_small">
