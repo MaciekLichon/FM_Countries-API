@@ -1,28 +1,28 @@
 export interface ICountryDetails {
-    flagSrc: string,
-    flagAlt: string,
-    name: string,
-    nativeName: string,
-    region: string,
-    subregion: string,
-    population: string,
-    capital: string,
-    currencies: string[],
-    languages: string[],
-    borders: string[],
-    tld: string,
-    cca3: string
+    flagSrc: string;
+    flagAlt: string;
+    name: string;
+    nativeName: string;
+    region: string;
+    subregion: string;
+    population: string;
+    capital: string;
+    currencies: string[];
+    languages: string[];
+    borders: string[];
+    tld: string;
+    cca3: string;
 }
 
 export interface ICountriesRequest {
-    pending: boolean,
-    error: boolean | null,
-    success: boolean | null
+    pending: boolean;
+    error: boolean | null;
+    success: boolean | null;
 }
 
 export interface ICountriesState {
-    data: ICountryDetails[],
-    request: ICountriesRequest
+    data: ICountryDetails[];
+    request: ICountriesRequest;
 }
 
 export interface IFiltersState {
@@ -35,8 +35,6 @@ export interface IState {
     filters: IFiltersState;
 }
 
-
-
 const initialState: IState = {
     countries: {
         data: [],
@@ -44,12 +42,12 @@ const initialState: IState = {
             pending: false,
             error: null,
             success: null,
-        }
+        },
     },
     filters: {
-        name: '',
-        region: ''
-    }
+        name: "",
+        region: "",
+    },
 };
 
 export default initialState;

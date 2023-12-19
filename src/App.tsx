@@ -5,14 +5,16 @@ import { useDispatch } from "react-redux";
 import Home from "./components/Home/Home";
 import Country from "./components/Country/Country";
 import Container from "./components/Container/Container";
-import { fetchAllCountries } from "./redux/countriesRedux";
 
+import { fetchCountries } from "./redux/countriesSlice";
+import { AppDispatch } from "./redux/store";
 
 const App: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
 
-    const dispatch = useDispatch();
-
-    useEffect(() => dispatch(fetchAllCountries()), [dispatch])
+    useEffect(() => {
+        dispatch(fetchCountries())
+    }, [dispatch]);
 
     return (
         <Container>

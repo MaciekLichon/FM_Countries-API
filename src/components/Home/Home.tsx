@@ -1,14 +1,13 @@
 import React from "react";
 import "./Home.scss";
 import { useSelector } from "react-redux";
-import { getFilteredCountries } from "../../redux/countriesRedux";
+import { getFilteredCountries } from "../../redux/countriesSlice";
 
 import CountryPreview from "../CountryPreview/CountryPreview";
 import CountriesList from "../CountriesList/CountriesList";
 import Filters from "../Filters/Filters";
 
 const Home: React.FC = () => {
-
     const countries = useSelector(getFilteredCountries);
 
     return (
