@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getCountryByName } from "../../redux/countriesSlice";
 import BorderButton from "../BorderButton/BorderButton";
 import { RootState } from "../../redux/store";
+import { useDarkModeContext } from "../../context/darkModeContext";
 
 const Country: React.FC = () => {
     const { countryName } = useParams();
@@ -23,17 +24,16 @@ const Country: React.FC = () => {
         return (str += array[array.length - 1]);
     };
 
+    const isDarkMode = useDarkModeContext();
+
     return (
         <div className="country">
             <Link to="/" className="tag tag_big country__backBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M5.81802 3.6967L6.87868 4.75736L3.3785 8.25754H16.7428L16.7428 9.74246H3.3785L6.87868 13.2426L5.81802 14.3033L0.514719 9L5.81802 3.6967Z"
-                        fill="#111517"
-                    />
-                </svg>
+                {isDarkMode ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.46447 4.10744L7.64298 5.28596L3.75389 9.17504L18.6031 9.17504L18.6031 10.825L3.75389 10.825L7.64298 14.714L6.46447 15.8926L0.57191 10L6.46447 4.10744Z" fill="white" /> </svg>
+                ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"> <path fillRule="evenodd" clipRule="evenodd" d="M5.81802 3.6967L6.87868 4.75736L3.3785 8.25754H16.7428L16.7428 9.74246H3.3785L6.87868 13.2426L5.81802 14.3033L0.514719 9L5.81802 3.6967Z" fill="#111517" /> </svg>
+                )}
                 Back
             </Link>
             <div className="country__content">

@@ -10,11 +10,15 @@ import "./styles/normalize.scss";
 import "./styles/general.scss";
 import "./styles/typography.scss";
 
+import { DarkModeContextProvider } from "./context/darkModeContext.tsx";
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <App />
+                <DarkModeContextProvider>
+                    <App />
+                </DarkModeContextProvider>
             </Provider>
         </BrowserRouter>
     </React.StrictMode>

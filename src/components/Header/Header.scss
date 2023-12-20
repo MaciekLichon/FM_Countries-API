@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+.header {
+    padding-block: 2rem;
+    background-color: $clr-100;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+
+    @media (min-width: $tablet) {
+        padding-block: 1.5rem;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-weight: $fw-extrabold;
+        line-height: 1.25rem;
+
+        @media (min-width: $tablet) {
+            font-size: 1.5rem;
+            line-height: 1.375;
+        }
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        svg {
+            margin-bottom: 2px;
+        }
+    }
+}
