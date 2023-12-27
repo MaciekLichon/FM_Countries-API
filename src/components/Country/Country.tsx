@@ -1,5 +1,5 @@
 import React from "react";
-import "./country.scss";
+import "./Country.scss";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCountryByName } from "../../redux/countriesSlice";
