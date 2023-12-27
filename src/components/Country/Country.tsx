@@ -25,8 +25,8 @@ const Country: React.FC = () => {
     };
 
     const isDarkMode = useDarkModeContext();
-
-    if (!country) return <Navigate to="/" />
+    
+    if (country === undefined) return <Navigate to="/" />
     return (
         <div className="country">
             <Link to="/" className="tag tag_big country__backBtn">
