@@ -14,7 +14,7 @@ import { DarkModeContextProvider } from "./context/darkModeContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename={'/FM_Countries-API/'}>
             <Provider store={store}>
                 <DarkModeContextProvider>
                     <App />
