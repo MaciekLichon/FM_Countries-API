@@ -4,6 +4,8 @@ import "./CountryPreview.scss";
 import { Link } from "react-router-dom";
 import { ICountryDetails } from "../../redux/countriesSlice";
 
+
+
 const CountryPreview: React.FC<ICountryDetails> = ({ flagSrc, flagAlt, name, region, population, capital }) => {
     
     return (

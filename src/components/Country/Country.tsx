@@ -1,6 +1,6 @@
 import React from "react";
 import "./country.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCountryByName } from "../../redux/countriesSlice";
 import BorderButton from "../BorderButton/BorderButton";
@@ -26,6 +26,7 @@ const Country: React.FC = () => {
 
     const isDarkMode = useDarkModeContext();
 
+    if (!country) return <Navigate to="/" />
     return (
         <div className="country">
             <Link to="/" className="tag tag_big country__backBtn">
